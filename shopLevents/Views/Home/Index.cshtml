@@ -1,0 +1,144 @@
+﻿@*@model IEnumerable<shopLevents.Models.Product>*@
+@using shopLevents.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Trang chủ - 1MISSA";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div id="content">
+    <div id="content-video">
+        <button>Chương Trình Mới Từ 1MISSA!</button>
+
+        <video class="trangtri" autoplay loop muted>
+            <source src="~/Content/video.mp4" />
+        </video>
+    </div>
+    <!-- end video -->
+    <div id="newcollection">
+        <div class="container-fluid">
+            <div class="h3">
+                <h3>SẢN PHẨM NỔI BẬT</h3>
+            </div>
+            <div class="div-pro-list">
+                @foreach (var sanpham in Model)
+                {
+                    <div class="box-pro col-12 col-sm-6 col-md-4"> @*12 -> 1 hình; 6 -> 2 hình; 4 -> 3 hình*@
+                        <div class="box-pro-image">
+                            <a href="/CustomerProducts/Details/@sanpham.ProductID"><img class="front" src="~/Content/Images/@sanpham.ImagePro"></a>
+                            <a href="/CustomerProducts/Details/@sanpham.ProductID"><img class="behind" src="~/Content/Images/@sanpham.ImageBehind"></a>
+                        </div>
+                        <div class="box-pro-description">
+                            <p><a href="/CustomerProducts/Details/@sanpham.ProductID" class="description-product">@sanpham.NamePro</a></p>
+                            <p class="price">@sanpham.Price vnđ</p>
+                        </div>
+                    </div>
+                    <a href="~/Views/Home/Index.cshtml"></a>
+                }
+            </div>
+        </div>
+    </div>
+    <section id="Slider">
+        <div class="h3">
+            <h3>ƯU ĐÃI TỪ 1MISSA</h3>
+        </div>
+        <div class="aspect-ratio-169">
+            <img src="~/Content/Images/topbanner5.jpg" />
+            <img src="~/Content/Images/topbanner4.jpg" />
+            <img src="~/Content/Images/topbanner2.jpg" />
+            <img src="~/Content/Images/topbanner1.png" />
+            <img src="~/Content/Images/topbanner3.jpg" />
+        </div>
+        <div class="dot-container">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+    <!-- end newcollection -->
+    <div id="outfits">
+        <div class="container-fluid">
+            <div class="h3">
+                <h3>THỜI TRANG TỪ 1MISSA</h3>
+            </div>
+            <div class="div-pro-list">
+                <div class="box-pro-1 col-12 col-sm-5 col-md-5">
+                    <div class="box-pro-image">
+                        <a href="#"><img class="front" src="~/Content/Images/outfit1,1.jpg" alt=""></a>
+                        <a href="#"><img class="behind" src="~/Content/Images/outfit1.jpg" alt=""></a>
+                    </div>
+                    <button>Xem bộ sưu tập</button>
+                </div>
+                <div class="box-pro-1 col-12 col-sm-5 col-md-5">
+                    <div class="box-pro-image">
+                        <a href="#"><img class="front" src="~/Content/Images/outfit2,2.jpg" alt=""></a>
+                        <a href="#"><img class="behind" src="~/Content/Images/outfit2.jpg" alt=""></a>
+                    </div>
+                    <button>Xem bộ sưu tập</button>
+                </div>
+                <div class="box-pro-1 col-12 col-sm-5 col-md-5">
+                    <div class="box-pro-image">
+                        <a href="#"><img class="front" src="~/Content/Images/outfit3,3.jpg" alt=""></a>
+                        <a href="#"><img class="behind" src="~/Content/Images/outfit3.jpg" alt= ""></a>
+                    </div>
+                    <button>Xem bộ sưu tập</button>
+                </div>
+                <div class="box-pro-1 col-12 col-sm-5 col-md-5">
+                    <div class="box-pro-image">
+                        <a href="#"><img class="front" src="~/Content/Images/outfit4,4.jpg" alt=""></a>
+                        <a href="#"><img class="behind" src="~/Content/Images/outfit4.jpg" alt=""></a>
+                    </div>
+                    <button>Xem bộ sưu tập</button>
+                </div>
+                <div class="box-pro-1 col-12 col-sm-5 col-md-5">
+                    <div class="box-pro-image">
+                        <a href="#"><img class="front" src="~/Content/Images/outfit5,5.jpg" alt=""></a>
+                        <a href="#"><img class="behind" src="~/Content/Images/outfit5.jpg" alt=""></a>
+                    </div>
+                    <button>Xem bộ sưu tập</button>
+                </div>
+                <div class="box-pro-1 col-12 col-sm-5 col-md-5">
+                    <div class="box-pro-image">
+                        <a href="#"><img class="front" src="~/Content/Images/outfit6,6.jpg" alt=""></a>
+                        <a href="#"><img class="behind" src="~/Content/Images/outfit6.jpg" alt=""></a>
+                    </div>
+                    <button>Xem bộ sưu tập</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end outfits -->
+    <div id="collection">   
+
+    </div>
+    <!-- end collection -->
+</div>
+<!-- end content -->
+<script>
+    const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
+    const imgContainer = document.querySelector('.aspect-ratio-169')
+    const dotItem = document.querySelectorAll(".dot")
+    let imgNumber = imgPosition.length
+    let index = 0
+    imgPosition.forEach(function (image, index) {
+        image.style.left = index * 100 + "%"
+        dotItem[index].addEventListener("click", function () {
+            slider(index)
+        })
+    })
+    function imgSlide() {
+        index++;
+        if (index >= imgNumber) { index = 0 }
+        slider(index)
+    }
+    function slider(index) {
+        imgContainer.style.left = "-" + index * 100 + "%"
+        const dotActive = document.querySelector(".active")
+        dotActive.classList.remove("active")
+        dotItem[index].classList.add("active")
+    }
+    setInterval(imgSlide, 5000)
+</script>

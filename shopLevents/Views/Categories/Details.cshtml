@@ -1,0 +1,39 @@
+﻿@model shopLevents.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+@* - Ta dùng template có sẵn của MVC là dạng Details
+   - Model class ta chọn dạng dối tượng hiển thị là Category
+   - Ta chọn file _MasterLayout
+*@
+
+<div id="content_1">
+    <div style="margin: 10px auto; width: 70%;">
+        <div class="h3">
+            <h3 style="margin-top: 42px;">CHI TIẾT LOẠI SẢN PHẨM</h3>
+        </div>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    MÃ LOẠI SẢN PHẨM
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    @Html.DisplayFor(model => model.IDCate)
+                </dd>
+                <dt>
+                    TÊN LOẠI SẢN PHẨM
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    @Html.DisplayFor(model => model.NameCate)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("SỬA", "Edit", new { id = Model.Id }, new { @class = "btn custom-btn btn-4" }) |
+            @Html.ActionLink("Trở lại", "Index")
+        </p>
+    </div>
+</div>

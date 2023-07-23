@@ -1,0 +1,51 @@
+﻿@*@model IEnumerable<shopLevents.Models.Product>*@
+@using shopLevents.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Shop - Levents";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div id="content-main">
+    <div id="breadcrumb">
+        <p>
+            <a class="breadcrumb-a" href="@Url.Action("Index", "Home")">Trang chủ</a> /
+            <a class="breadcrumb-a" href="@Url.Action("Index", "CustomerProducts")">Danh mục sản phẩm</a> /
+            <h3 class="breadcrumb-p">Tất cả</h3>
+        </p>
+    </div>
+    <div id="newcollection">
+        <div class="container-fluid">
+            <div class="div-pro-list">
+                @foreach (var sanpham in Model)
+                {
+                    <div class="box-pro col-12 col-sm-6 col-md-4"> @*12 -> 1 hình; 6 -> 2 hình; 4 -> 3 hình*@
+                        <div class="box-pro-image">
+                            <a href="/CustomerProducts/Details/@sanpham.ProductID"><img class="front" src="~/Content/Images/@sanpham.ImagePro"></a>
+                            <a href="/CustomerProducts/Details/@sanpham.ProductID"><img class="behind" src="~/Content/Images/@sanpham.ImageBehind"></a>
+                        </div>
+                        <div class="box-pro-description">
+                            <p><a href="/CustomerProducts/Details/@sanpham.ProductID" class="description-product">@sanpham.NamePro</a></p>
+                            <p class="price">@sanpham.Price vnđ</p>
+                        </div>
+                    </div>
+                }
+                @*Khi nhấn vào hình ảnh sp hoặc tên sp sẽ chuyển sang trang khách hàng (Customer) xem thông tin và đặt hàng*@
+            </div>
+        </div>
+    </div>
+    <div class="MenuPage">
+        <p>Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</p>
+        <div class="NumberPage">
+            @if (ViewBag.CateID > 0)
+            {
+                @Html.PagedListPager(Model, page => Url.Action("GetProductsByCateId", "CustomerProducts", new { page = page }))
+            }
+            else
+            {
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+            }
+        </div>
+    </div>
+</div>
+

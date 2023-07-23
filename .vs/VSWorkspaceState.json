@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\shopLevents",
+    "\\shopLevents\\Controllers",
+    "\\shopLevents\\Models",
+    "\\shopLevents\\Views",
+    "\\shopLevents\\Views\\Contacts",
+    "\\shopLevents\\Views\\CustomerProducts",
+    "\\shopLevents\\Views\\Home",
+    "\\shopLevents\\Views\\Products",
+    "\\shopLevents\\Views\\Shared"
+  ],
+  "SelectedNode": "\\shopLevents\\Views\\Contacts\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

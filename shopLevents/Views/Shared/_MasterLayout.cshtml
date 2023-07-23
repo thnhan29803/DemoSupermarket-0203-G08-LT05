@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Content/Images/1.png">
+    <link rel="stylesheet" href="~/Content/Style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Content/Plugin/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/Plugin/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="header1">
+                <div>
+                    <div id="header1-padding-left">
+                        <i class="bi bi-globe"></i>
+                        <p>1MISSA LOVE YOU!!!</p>
+                    </div>
+                    <div id="header1-padding-right">
+                        <a href="#">
+                            <p style="color: white">BUY NOW!</p>
+                        </a>
+                        <i class="bi bi-arrow-right-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- end header1 -->
+            <div id="header2" class="container-fluid">
+                <div class="row">
+                    <div id="header2-img" class="col-8 col-md-8 col-lg-9">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/Images/1.png" style="width: 200px; height: 65px" alt=""></a>
+                    </div>
+                    <div id="header2-font-icons" class="col-4 col-md-4 col-lg-3">
+                        @if ((string)Session["IsAdmin"] == "0" || Session["IsAdmin"] == null)
+                        {
+                            <a href="#"><i class="bi bi-bell"></i></a>
+                            <a href="#">
+                                <p>Wishlist</p>
+                            </a>
+                            <a href="#"><i class="bi bi-search"></i></a>
+
+                            @Html.Action("CartPartial", "Cart")
+
+                            if (Session["Taikhoan"] != null)
+                            {
+                                <a href="#">
+                                    <i class="bi bi-person-check-fill"></i>
+                                </a>
+                                <a href="@Url.Action("Logout", "Users")"><i class="bi bi-box-arrow-right"></i></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login", "Users")"><i class="bi bi-person-circle"></i></a>
+                            }
+                            <a href="#">
+                                <img src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt="">
+                            </a>
+                        }
+                        else
+                        {
+                            if (Session["Taikhoan"] != null)
+                            {
+                                <a href="#">
+                                    <i class="bi bi-person-check-fill"></i>
+                                </a>
+                                <a href="@Url.Action("Logout", "Users")"><i class="bi bi-box-arrow-right"></i></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login", "Users")"><i class="bi bi-person-circle"></i></a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- end header2 -->
+            <div id="navigation">
+                @if ((string)Session["IsAdmin"] == "0" || Session["IsAdmin"] == null)
+                {
+                    <ul id="nav">
+                        <li><a href="@Url.Action("Index", "AboutUs")">Siêu thị 1MISSA</a></li>
+                        <li>
+
+                            <a href="#">Danh mục sản phẩm<img src="https://levents.asia/template/assets/images/svg/ic-arr.svg" alt=""></a>
+                            <ul class="subnav">
+                                <li><a href="@Url.Action("Index", "CustomerProducts")">Tất cả</a></li>
+                                @Html.Action("GetProductsByCategory", "CustomerProducts")
+                            </ul>
+                        </li>
+                        <li><a class="text-red" href="">Khuyến mãi</a></li>
+                        <li><a class="nav-link" href="@Url.Action("Index", "Collections")">Bộ sưu tập</a></li>
+                        <li><a class="nav-link" href="">Thời trang</a></li>
+                        <li><a class="nav-link" href="">Blog</a></li>
+                        <li>
+                            <a href="">Chăm sóc Khách hàng<img src="https://levents.asia/template/assets/images/svg/ic-arr.svg" alt=""></a>
+                            <ul class="subnav">
+                                <li><a href="#">1MISSA FABRIC</a></li>
+                                <li><a href="#">Easy shopping</a></li>
+                                <li><a href="#">Chính sách đổi trả & bảo hành</a></li>
+                                <li><a href="#">Chính sách membership</a></li>
+                                <li><a href="#">Chính sách vận chuyển</a></li>
+                                <li><a href="#">Hướng dẫn mua hàng & bảo quản</a></li>
+                                <li><a href="#">Q &. A</a></li>
+                            </ul>
+                        </li> 
+                        <li><a class="nav-link" href="@Url.Action("Index", "Contacts")">Hệ thống siêu thị</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul id="nav" style="justify-content: center;">
+                        <li><a href="@Url.Action("Index", "Categories")">Categories</a></li>
+                        <li><a href="@Url.Action("Index", "Products")">Products</a></li>
+                    </ul>
+                }
+            </div>
+            <!-- end navigation -->
+        </div>
+        <!-- end header -->
+        <div>
+            @RenderBody()
+        </div>
+        <div id="footer">
+            <div id="footer1">
+                <div class="footer1-1">
+                    <h3 class="font4">SIÊU THỊ 1MISSA</h3>
+                    <div>
+                        <div class="mrbt-23">
+                            <p>1MISSA - An tâm mua sắm mỗi ngày</p>
+                        </div>
+                        <p>&nbsp;</p>
+                        <p>HỘ KINH DOANH 1MISSA</p>
+                        <p>GPKD được cấp bởi Ủy ban nhân dân Quận 1– TP Hồ Chí Minh</p>
+                        <p>Mã số thuế: 8547618080</p>
+                        <p>Ngày cấp: 07/12/2020</p>
+                    </div>
+                </div>
+                <div class="footer1-2">
+                    <h3 class="font4">LIÊN HỆ</h3>
+                    <div>
+                        <p>Hotline</p>
+                        <h3 class="mrbt-23 cr-pt">1900 633 028</h3>
+                        <p>Email</p>
+                        <h3 class="mrbt-23 cr-pt">Customercare@1MISSA.asia</h3>
+                        <p>Mon - Sun</p>
+                        <h3 class="mrbt-23">09:30 ~ 21:30</h3>
+                        <p>Email Business</p>
+                        <h3 class="mrbt-23 cr-pt">business@1MISSA.asia</h3>
+                    </div>
+                </div>
+                <div class="footer1-3">
+                    <h3 class="font4">CỬA HÀNG</h3>
+                    <div class="container-footer">
+                        <p>325 Hoàng Sa, Tân Định,<br>quận 1, HCM</p>
+                        <p>The New Playground, 04<br>Phạm Ngũ Lão, quận 1,<br>HCM</p>
+                        <p>842 Sư Vạn Hạnh, phường<br>12, quận 10, HCM</p>
+                        <p>54 Mậu Thân, Xuân Khánh,<br>quận Ninh Kiều, Cần Thơ</p>
+                    </div>
+                </div>
+                <div class="footer1-4">
+                    <h3 class="font4">HỖ TRỢ</h3>
+                    <div class="container-footer">
+                        <p>1MISSA FABRIC</p>
+                        <p>Tài khoản</p>
+                        <p>Chính sách vận chuyển</p>
+                        <p>Thanh toán online</p>
+                        <p>Chính sách bảo mật<br> thông tin</p>
+                        <p>Chính sách bảo hành</p>
+                        <p>Chính sách khiếu nại</p>
+                    </div>
+                </div>
+                <div class="footer1-5">
+                    <h3 class="font4">MỞ RỘNG</h3>
+                    <div class="container-footer">
+                        <p>Tuyển dụng</p>
+                        <p>Blog</p>
+                        <i class="bi bi-facebook mrrt-20-icons"></i>
+                        <i class="bi bi-instagram mrrt-20-icons"></i>
+                        <i class="bi bi-tiktok mrrt-20-icons"></i>
+                        <i class="bi bi-youtube mrrt-20-icons"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer1 -->
+            <div id="footer2">
+                <p>1MISSA - An tâm mua sắm mỗi ngày</p>
+                <p>Tuyển dụng</p>
+                <p>Term & Policies</p>
+            </div>
+            <!-- end footer2 -->
+        </div>
+        <!-- end footer -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+      $(".owl-carousel").owlcarousel();
+    });
+    $('.owl-carousel').owlcarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      autoplay: true,
+      autoplaytimeout: 5000,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+    </script>*@
+    <script>
+    const clicklogin = document.queryselectorall('.js-log-in')
+    const modal = document.queryselector('.js-modal')
+    const modalcontainer = document.queryselector('.js-modal-container')
+    const modalclose = document.queryselector('.js-modal-close')
+    // hàm hiển thị log-in (thêm class open vào modal)
+    function showlogin() {
+      modal.classlist.add('open')
+    }
+    // hàm ẩn log-in (gỡ bỏ class open của modal)
+    function hidelogin() {
+      modal.classlist.remove('open')
+    }
+    // lặp qua từng thẻ và nghe hành vi click
+    for (const clickonlogin of clicklogin) {
+      clickonlogin.addeventlistener('click', showlogin)
+    }
+    modalclose.addeventlistener('click', hidelogin)
+    modal.addeventlistener('click', hidelogin)
+    modalcontainer.addeventlistener('click', function (event) {
+      event.stoppropagation()
+    })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

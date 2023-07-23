@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div id="content_1">
+    <div style="margin: 10px auto; width: 50%;">
+        <header class="modal-header">
+            <h5 style="margin-top: 42px;">TẠO TÀI KHOẢN</h5>
+        </header>
+        @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <div class="modal-body"> @*lưu ý name của các thẻ input phải trùng khớp với tên cột dưới CSDL của bảng Customer*@
+                <label for="name" class="modal-label"></label>
+                <input id="name" type="text" class="modal-input" placeholder="Họ và tên" name="NameCus"
+                       required>
+                <label for="email" class="modal-label"></label>
+                <input id="email" type="email" class="modal-input" placeholder="Email" name="EmailCus"
+                       required>
+                <label for="pwd" class="modal-label"></label>
+                <input id="pwd" type="password" class="modal-input" placeholder="Mật khẩu" name="PassCus"
+                       required>
+                <label for="phone" class="modal-label"></label>
+                <input id="phone" type="text" class="modal-input" placeholder="Số điện thoại" name="PhoneCus"
+                       required>
+                <input id="remember" type="checkbox" class="modal-checkbox">
+                <label for="remember" class="modal-label">Tôi đồng ý với các điều khoản và điều kiện, chính sách bảo mật và chính sách cookie</label>
+            </div>
+
+            <footer class="modal-footer">
+                <button type="submit" id="log-in">
+                    Tạo
+                </button>
+            </footer>
+        }
+    </div>
+</div>

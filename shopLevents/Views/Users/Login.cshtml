@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div id="content_1">
+    <div style="margin: 10px auto; width: 50%;">
+        <header class="modal-header">
+            <h5 style="margin-top: 42px;">ĐĂNG NHẬP</h5>
+        </header>
+        <h2 style="color: red;">@ViewBag.ThongBao</h2>
+        @using (Html.BeginForm("Login", "Users"))
+        {
+            @Html.ValidationSummary(true)
+            <div class="modal-body">
+                <p>Bạn chưa có tài khoản? <a class="a-mrl8" href="@Url.Action("Register", "Users")">Đăng ký</a></p>
+                <label for="email" class="modal-label"></label>
+                <input id="email" type="text" class="modal-input" placeholder="Tên đăng nhập" name="NameCus"
+                       required>
+                <label for="password" class="modal-label"></label>
+                <input id="password" type="password" class="modal-input" placeholder="Mật khẩu" name="PassCus"
+                       required>
+                <input checked id="remember" type="checkbox" class="modal-checkbox">
+                <label for="remember" class="modal-label">Ghi nhớ tài khoản</label>
+            </div>
+            <footer class="modal-footer">
+                <p class="modal-help"><a href="">Quên mật khẩu?</a></p>
+                <button type="submit" id="log-in">
+                    Đăng nhập
+                </button>
+            </footer>
+        }
+    </div>
+</div>
+
+ @*Khi người dùng bấm nút "Đăng nhập", thông tin của người dùng trong form sẽ được gửi về ActionMethod "Login"
+     của UserController (cụ thể là một object Customer với 2 tham số là NameCus và PassCus).
+     Lưu ý: ActionMethod "Login" này là dạng HttpPost
+ *@ 

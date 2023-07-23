@@ -1,0 +1,108 @@
+﻿@using shopLevents.Models
+@{
+    ViewBag.Title = "Delivery";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<div id="content_1">
+    <section class="delivery">
+        <div class="myy-container">
+            <div class="delivery-top-wrap">
+                <div class="delivery-top">
+                    <div class="delivery-top-delivery delivery-top-item">
+                        <i class="bi bi-cart3"></i>
+                    </div>
+                    <div class="delivery-top-address delivery-top-item">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="delivery-top-payment delivery-top-item">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="myy-container">
+            <div class="delivery-content my-row">
+                <div class="delivery-content-left">
+                    <p>Vui lòng chọn địa chỉ giao hàng</p>
+                    <div class="delivery-content-left-log-in my-row">
+                        <i class="bi bi-box-arrow-in-right" style="color: #009EFF!important;"></i>
+                        <p><a href="@Url.Action("Login", "Users")" , style="color: #009EFF!important;">Đăng nhập</a> (Nếu bạn đã có tài khoản 1MISSA)</p>
+                    </div>
+                    <div class="delivery-content-left-khachle my-row">
+                        <input checked name="check" type="radio" />
+                        <p><span style="font-weight: bold">Khách lẻ</span> (Nếu bạn không muốn lưu lại thông tin)</p>
+                    </div>
+                    <div class="delivery-content-left-register my-row">
+                        <input name="check" type="radio" />
+                        <p><span style="font-weight: bold">Đăng ký</span> (Tạo mới tài khoản với thông tin bên dưới)</p>
+                    </div>
+                    <div class="delivery-content-left-input-top my-row">
+                        <div class="delivery-content-left-input-top-item">
+                            <label for="">Họ tên <span style="color: red;">*</span></label>
+                            <input type="text" />
+                        </div>
+                        <div class="delivery-content-left-input-top-item">
+                            <label for="">Điện thoại <span style="color: red;">*</span></label>
+                            <input type="text" />
+                        </div>
+                        <div class="delivery-content-left-input-top-item">
+                            <label for="">Tỉnh/Thành phố <span style="color: red;">*</span></label>
+                            <input type="text" />
+                        </div>
+                        <div class="delivery-content-left-input-top-item">
+                            <label for="">Quận/Huyện <span style="color: red;">*</span></label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="delivery-content-left-input-bottom">
+                        <label for="">Địa chỉ <span style="color: red;">*</span></label>
+                        <input type="text" />
+                    </div>
+                    <div class="delivery-content-left-button my-row">
+                        <a href="@Url.Action("GetCartInfo", "Cart")"><span>&#171;</span><p>Quay lại giỏ hàng</p></a>
+                        <button onclick="dieu_huong()"><p style="margin: 0;">THANH TOÁN VÀ GIAO HÀNG</p></button>
+                    </div>
+                </div>
+                <div class="delivery-content-right">
+                    <table>
+                        <tr>
+                            <th style="width: 45%">Tên sản phẩm</th>
+                            <th style="width: 15%">Giảm giá</th>
+                            <th style="width: 20%">Số lượng</th>
+                            <th style="width: 20%">Thành tiền</th>
+                        </tr>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.NamePro</td>
+                                <td>-30%</td>
+                                <td>@product.Number</td>
+                                <td>@product.Price vnđ</td>
+                            </tr>
+
+                        }
+                        <tr>
+                            <td style="font-weight: bold" colspan="3">Tổng</td>
+                            <td style="font-weight: bold">@ViewBag.TotalPrice</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold" colspan="3">Thuế VAT</td>
+                            <td style="font-weight: bold">65 vnđ</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold" colspan="3">Tổng tiền hàng</td>
+                            <td style="font-weight: bold">@ViewBag.TotalPrice</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    function dieu_huong() {
+        location.assign("@Url.Action("Payment", "Cart")");
+    }
+</script>

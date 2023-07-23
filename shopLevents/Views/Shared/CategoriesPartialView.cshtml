@@ -1,0 +1,13 @@
+﻿@model IEnumerable<shopLevents.Models.Category>
+
+@foreach (var item in Model)
+{
+    @Html.ActionLink(item.NameCate, "GetProductsByCateId", "CustomerProducts",
+    new { id = item.Id }, new { @class = "list-group-item" })
+}
+@*Dùng partial view để render một list group và hiển thị các Categories đang có*@ 
+@*Partial View
+    - Đóng vai trò là một Child - View 
+    - Có thể nhúng vào các View khác 
+    - Tăng khả năng tái sử dụng code 
+*@

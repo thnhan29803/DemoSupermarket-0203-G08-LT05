@@ -1,0 +1,57 @@
+﻿@model shopLevents.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div id="content_1">
+    <div style="margin: 10px auto; width: 70%;">
+        <div class="h3">
+            <h3 style="margin-top: 42px;">CHI TIẾT SẢN PHẨM</h3>
+        </div>
+        <div>
+            <hr />
+
+            <dl class="dl-horizontal">
+                <dt>
+                    TÊN SẢN PHẨM
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    @Html.DisplayFor(model => model.NamePro)
+                </dd>
+                <dt>
+                    MÔ TẢ
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    @Html.Raw(@Model.DecriptionPro)
+                </dd>
+                <dt>
+                    GIÁ
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    HÌNH MINH HỌA
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    <img style="width: 50%;" src="~/Content/Images/@Model.ImagePro" />
+                </dd>
+                <dd style="margin: 10px 0 40px;">
+                    <img style="width: 50%;" src="~/Content/Images/@Model.ImageBehind" />
+                </dd>
+                <dt>
+                    LOẠI SẢN PHẨM
+                </dt>
+                <dd style="margin: 10px 0 40px;">
+                    @Html.DisplayFor(model => model.Category1.NameCate)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Sửa", "Edit", new { id = Model.ProductID }, new { @class= "btn custom-btn btn-4" }) |
+            @Html.ActionLink("Trở lại", "Index")
+        </p>
+    </div>
+</div>

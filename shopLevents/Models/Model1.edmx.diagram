@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="998072f7ffa441f0949fa0efb65120a5" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="DBSportStore_5Model.AdminUser" Width="1.5" PointX="11.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSportStore_5Model.Category" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSportStore_5Model.Customer" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSportStore_5Model.OrderDetail" Width="1.5" PointX="7.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSportStore_5Model.OrderPro" Width="1.5" PointX="3.625" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSportStore_5Model.ProductImage" Width="1.5" PointX="7.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSportStore_5Model.Product" Width="1.5" PointX="4.25" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="DBSportStore_5Model.FK_Pro_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSportStore_5Model.FK__OrderPro__IDCus__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSportStore_5Model.FK__OrderDeta__IDOrd__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSportStore_5Model.FK__OrderDeta__IDPro__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSportStore_5Model.FK_ProImage_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

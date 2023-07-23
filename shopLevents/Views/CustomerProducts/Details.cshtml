@@ -1,0 +1,168 @@
+﻿@model shopLevents.Models.ProductDetail
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div id="content_1">
+    <section class="product">
+        <div id="breadcrumb">
+            <p>
+                <a class="breadcrumb-a" href="@Url.Action("Index", "Home")">Trang chủ</a> /
+                <a class="breadcrumb-a" href="@Url.Action("Index", "CustomerProducts")">Danh mục sản phẩm</a> /
+                <h3 class="breadcrumb-p">@Model.NamePro</h3>
+            </p>
+        </div>
+        <div class="my-container">
+            <div class="product-content my-row">
+                <div class="product-content-left my-row">
+                    <div class="product-content-left-small-img">
+                        @foreach (var image in Model.listProductImage)
+                        {
+                            <img src="~/Content/Images/@image.Image" />
+                        }
+                    </div>
+                    <div class="product-content-left-big-img">
+                        <img src="~/Content/Images/@Model.ImagePro" />
+                    </div>
+                </div>
+                <div class="product-content-right">
+                    <div class="product-content-right-product-name">
+                        <h5>@Model.NamePro</h5>
+                    </div>
+                    <div class="product-content-right-product-price">
+                        <p>@Model.Price vnđ</p>
+                    </div>
+                    <div class="product-content-right-product-color">
+                        <p><span>Màu sắc</span>:</p>
+                        @foreach (var image in Model.listColorImage)
+                        {
+                            <div class="product-content-right-product-color-img my-row">
+                                <img src="~/Content/Images/@image.Image" />
+                            </div>
+                        }
+                    </div>
+                    <div class="product-content-right-product-quantity">
+                        <p>Số lượng: </p>
+                        <input type="number" min="0" value="1" />
+                    </div>
+                    <div class="product-content-right-product-button">
+                        <button onclick="dieu_huong()"><i class="bi bi-basket"></i> <p>Thêm vào giỏ hàng</p></button>
+                        <button><p>Mua hàng</p></button>
+                    </div>
+                    <div class="product-content-right-product-icons">
+                        <div class="product-content-right-product-icons-item">
+                            <i class="bi bi-telephone-fill"></i> <p>Hotline</p>
+                        </div>
+                        <div class="product-content-right-product-icons-item">
+                            <i class="bi bi-chat-dots-fill"></i> <p>Chat</p>
+                        </div>
+                        <div class="product-content-right-product-icons-item">
+                            <i class="bi bi-envelope-fill"></i> <p>Mail</p>
+                        </div>
+                    </div>
+                    <div class="product-content-right-bottom">
+                        <div class="product-content-right-bottom-content-big">
+                            <div class="product-content-right-bottom-content-title my-row">
+                                <div class="product-content-right-bottom-content-title-item inforr">
+                                    <p>Thông tin</p> <i class="bi bi-arrow-down-circle"></i>
+                                </div>
+                                <div class="product-content-right-bottom-content-title-item changee">
+                                    <p>Quy định đổi trả</p> <i class="bi bi-arrow-down-circle"></i>
+                                </div>
+                            </div>
+                            <div class="product-content-right-bottom-content">
+                                <div class="product-content-right-bottom-content-infor">
+                                    <p>
+                                        @Html.Raw(@Model.DecriptionPro)
+                                    </p>
+                                </div>
+                                <div class="product-content-right-bottom-content-size">
+
+                                </div>
+                                <div class="product-content-right-bottom-content-change">
+                                    <p>
+                                        Nhằm mang lại cho bạn sự tiện lợi và những trải nghiệm tuyệt vời khi mua hàng, tụi mình đã phát
+                                        triển dịch vụ đổi hàng tận nơi và chính sách bảo hành.
+
+                                        Tham khảo thêm thông tin về chính sách <span style="color: rgb(210, 109, 105)">tại đây</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </section>
+    <section class="product-related">
+        <div class="product-related-title">
+            <p>CÓ THỂ BẠN SẼ THÍCH</p>
+        </div>
+        <div class="product-content my-row">
+            <div class="product-related-item">
+                <img src="~/Content/Images/spnee15.jpg" />
+                <div class="product-related-item-description">
+                    <a>Gối nằm cotton trẻ em 30x40cm</a>
+                    <p>73,600 vnđ</p>
+                </div>
+            </div>
+            <div class="product-related-item">
+                <img src="~/Content/Images/spnee24.jpg" />
+                <div class="product-related-item-description">
+                    <a>Tã quần Bobby XXXL 22</a>
+                    <p>200,300 vnđ</p>
+                </div>
+            </div>
+            <div class="product-related-item">
+                <img src="~/Content/Images/spnee55.jpg" />
+                <div class="product-related-item-description">
+                    <a>Mặt nạ 3W Clinic dưa leo 23g</a>
+                    <p>11,000 vnđ</p>
+                </div>
+            </div>
+            <div class="product-related-item">
+                <img src="~/Content/Images/spnee6.jpg" />
+                <div class="product-related-item-description">
+                    <a>Nước giặt xả hương nước hoa Coop Select túi 3.8kg + Giấy vệ sinh Coop Finest 2 lớp 1 cuộn 700g</a>
+                    <p>175,000 vnđ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    const bigImg = document.querySelector(".product-content-left-big-img img")
+    const smallImg = document.querySelectorAll(".product-content-left-small-img img")
+    smallImg.forEach(function (imgItem,X) {
+        imgItem.addEventListener("click", function () {
+            bigImg.src = imgItem.src
+        })
+    })
+
+
+    const inforr = document.querySelector(".inforr")
+    const changee = document.querySelector(".changee")
+    document.querySelector(".product-content-right-bottom-content-change").style.display = "none"
+    document.querySelector(".product-content-right-bottom-content-infor").style.display = "none"
+    if (inforr) {
+        inforr.addEventListener("click", function () {
+            document.querySelector(".product-content-right-bottom-content-change").style.display = "none"
+            document.querySelector(".product-content-right-bottom-content-infor").style.display = "block"
+        })
+    }
+    if (changee) {
+        changee.addEventListener("click", function () {
+            document.querySelector(".product-content-right-bottom-content-change").style.display = "block"
+            document.querySelector(".product-content-right-bottom-content-infor").style.display = "none"
+        })
+    }
+
+    function dieu_huong() {
+        location.assign("@Url.Action("AddToCart", "Cart", new {id = Model.ProductID })")
+    }
+</script>
+
+
+
+
